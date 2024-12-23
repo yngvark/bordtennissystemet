@@ -15,10 +15,10 @@
   --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
   --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
-  --vt-c-text-light-1: #000000; /* Black for better contrast */
-  --vt-c-text-light-2: rgba(0, 0, 0, 0.8); /* Darker gray for better contrast */
-  --vt-c-text-dark-1: #ffffff; /* White for better contrast */
-  --vt-c-text-dark-2: rgba(255, 255, 255, 0.8); /* Lighter gray for better contrast */
+  --vt-c-text-light-1: #333333; /* Dark gray for better contrast */
+  --vt-c-text-light-2: rgba(51, 51, 51, 0.8); /* Slightly lighter gray */
+  --vt-c-text-dark-1: #f0f0f0; /* Light gray for better contrast */
+  --vt-c-text-dark-2: rgba(240, 240, 240, 0.8); /* Slightly darker gray */
 }
 
 h1 {
