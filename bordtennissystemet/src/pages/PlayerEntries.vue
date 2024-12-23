@@ -34,6 +34,8 @@ export default {
       editIndex: null,
       editPlayer: '',
     };
+  },
+  methods: {
     editPlayerName(index) {
       this.editIndex = index;
       this.editPlayer = this.players[index];
