@@ -43,10 +43,3 @@ export default {
   },
 };
 </script>
-</template>
-
-<script>
-export default {
-  name: 'PlayerEntries'
-}
-</script>
