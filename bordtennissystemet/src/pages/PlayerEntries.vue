@@ -33,7 +33,7 @@ export default {
       players: ['John Smith', 'Henry Jones', 'John Doe'],
       editIndex: null,
       editPlayer: '',
-    };
+    },
     editPlayerName(index) {
       this.editIndex = index;
       this.editPlayer = this.players[index];
