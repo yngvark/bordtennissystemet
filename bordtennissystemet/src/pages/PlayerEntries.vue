@@ -47,7 +47,6 @@ export default {
         this.editPlayer = '';
       }
     },
-  methods: {
     addPlayer() {
       if (this.newPlayer.trim()) {
         this.players.push(this.newPlayer.trim());
