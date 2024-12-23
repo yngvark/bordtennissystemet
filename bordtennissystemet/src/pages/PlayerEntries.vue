@@ -1,5 +1,4 @@
 <template>
-<template>
   <div>
     <h1>Player entry</h1>
 
