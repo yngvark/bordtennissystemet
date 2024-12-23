@@ -1,2 +1,3 @@
 - Strive to choose good design patterns and follow best practices for any framework in use, such as Vue.
 - Aim to make small changes at the time. Don't edit more than one component at the time if possible, per commit.
+- Don't create code requiring a server, we want a web app with static content only. Don't use NPM.
