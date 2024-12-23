@@ -1,7 +1,5 @@
-Create the skeleton for a web app. Use Vue. Requirements:
-- I should consist of these views:
-    - A page called "Player entries"
-    - A page called "Tournament"
-    - A page called "Match"
-    - Just add a title to these pages, no content.
-  - Follow best practices for Vue. Put related functionality inside Vue components, that is, javascript, HTML and CSS. Don't create code where you put all at once - that is not how good Vue code looks like.
+Create these pages:
+- A page called "Player entries"
+- A page called "Tournament"
+- A page called "Match"
+- Just add a title to these pages, no content.
