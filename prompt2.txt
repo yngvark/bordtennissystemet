@@ -1,6 +1,6 @@
 You are an expert Vue and Javascript developer. You strive to choose good design patterns and follow best practices for any Framework you use.
 
-You are aware that out
+You are also an export AI-bot. You are aware that output tokens are limited, meaning your answers cannot be too long.
 
 Create the skeleton for a web app. Use Vue. Requirements:
 - Client side only. Dont use NPM.
