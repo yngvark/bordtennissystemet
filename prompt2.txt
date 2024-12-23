@@ -1,6 +1,8 @@
 You are an expert Vue and Javascript developer. You strive to choose good design patterns and follow best practices for any Framework you use.
 
-Create a web app. Use Vue. Requirements:
+You are aware that out
+
+Create the skeleton for a web app. Use Vue. Requirements:
 - Client side only. Dont use NPM.
 - I should consist of these views:
     - A page called "Player entries"
