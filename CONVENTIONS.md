@@ -1,3 +1,4 @@
 - Strive to choose good design patterns and follow best practices for any framework in use, such as Vue.
 - Aim to make small changes at the time. Don't edit more than one component at the time if possible, per commit.
-- Don't create code requiring a server, we want a web app with static content only. Don't use NPM.
+- The application should be able to be built into static files that can be hosted on platforms like GitHub Pages.
+- Use build tools like Vue CLI or Vite to manage components and assets, ensuring the final output is static.
