@@ -21,6 +21,10 @@
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 }
 
+h1 {
+  color: var(--vt-c-indigo); /* Set a contrasting color for h1 */
+}
+
 /* semantic color variables for this project */
 :root {
   --color-background: #ffffff;
