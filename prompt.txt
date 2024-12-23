@@ -1,0 +1,79 @@
+ Create a table tennis system, from now on called TTS. Here are the requirements:
+
+ - TTS should be a client side web application. Use plain Javascript.
+ - TTS should be supported on mobile devices.
+ - TTS should support the following use: Players meet physically to play table tennis against each other. They want to play a tournament. It should be a league, not a cup. Meaning, at the end of the tournament, TTS should have produced a ranking of all the players, in a table.
+ - TTS should support two modes: A management mode and a match mode.
+   - The management mode is where we can see the current ranking, tables and so on.
+     - It should list all played matches with results, and matches to come.
+     - It should show the current ranking.
+   - The match mode is where we go when we play matches, and can be used to keep scores for an on-going game.
+     - Each match goes to 11. It uses official table tennis rules.
+     - It should be possible to keep the score.
+     - It should show the current score, and who has the serve.
+     - When in match mode, we want to hear background sound of an audience. We want it because it gives a cool, funny and nice match-feeling.
+     - We want a sound when a player scores a point.
+ - TTS should plan the matches so that they are nicely distributed for players to have fun. This means for instance that if there are 4 players, A, B, C and D, and if A just played against B, then the next match should be C versus D, not A versus C, since A just played.
+
+ Use a nice layout, and use emojis where appropriate.
+
+ If you feel some requirements are contradictory, or you need more information, ask!
+
+ Here is another set of requirements, made by another person:
+
+ * Enter player names.
+ * Set up list of matches such that all players will play against each other.
+ * Ideally players should have equal wait time between matches.
+ * There are home and away courts. Players should ideally have equal no of matches with home and away courts.
+ * During a match, the view should change to a "match score" view where referee can keep track of serves and scores.
+ * Match score limit and no of serves should be configurable.
+ * Does not need to deal with Sets, only Matches.
+ * Normal table tennis rules apply where you need to lead by two points to win match.
+ * Referee should be able to undo scorings. (I suggest using event sourcing for this.)
+ * When match is completed, the score should be stored.
+ * There should be a leaderboard with the current standings using no. of matches won, then score diff.
+
+ Since you are an LLM with a small context window for the output, you must divide the work into smaller steps and outputs. Suggest some steps. Then do one step at the time, and ask me to continue.
+
+ Here is a mockup in text format:
+
+ === Player entry ===
+
+ Enter player name
+ [          ] [CREATE]
+
+ [ CREATE TOURNAMENT ]
+
+ Players:
+ - John Smith
+ - Henry Jones
+ - John Doe
+
+ === Tournament view ===
+
+ # matches can be played in any order, but the listing should suggest the order.
+
+ John Smith 11 - 5 Henry Jones <...>
+ Henry Jones - John Doe <play match>
+ John Doe - John Smith <play match>
+
+ Ranking:
+ 1. John Smith (1)  # name, no of wins
+ 2. Henry Jones (0)
+ 3. John Doe (0)
+
+ === Play match view ===
+
+ # Click on player to score point
+
+ John Smith    -    Henry Jones
+ 6                   3 (serve) # serve can be indicated with emoji
+
+ [ UNDO ]
+
+ === Completed match view ===
+
+ John Smith    -    Henry Jones
+ 12                  10
+
+ [ UNDO ] [ COMPLETE MATCH ]
