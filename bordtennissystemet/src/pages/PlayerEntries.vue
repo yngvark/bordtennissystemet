@@ -18,6 +18,7 @@
           <input v-else v-model="editPlayer" @keyup.enter="savePlayer(index)" />
           <button @click="editPlayerName(index)" v-if="editIndex !== index">Edit</button>
           <button @click="savePlayer(index)" v-else>Save</button>
+          <button @click="deletePlayer(index)">Delete</button>
         </li>
       </ul>
     </div>
@@ -30,7 +31,7 @@ export default {
   data() {
     return {
       newPlayer: '',
-      players: ['John Smith', 'Henry Jones', 'John Doe'],
+      players: [],
       editIndex: null,
       editPlayer: '',
     };
@@ -51,6 +52,13 @@ export default {
       if (this.newPlayer.trim()) {
         this.players.push(this.newPlayer.trim());
         this.newPlayer = '';
+      }
+    },
+    deletePlayer(index) {
+      this.players.splice(index, 1);
+      if (this.editIndex === index) {
+        this.editIndex = null;
+        this.editPlayer = '';
       }
     },
     createTournament() {
