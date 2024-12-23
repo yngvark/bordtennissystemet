@@ -13,7 +13,12 @@
     <div>
       <h2>Players:</h2>
       <ul>
-        <li v-for="player in players" :key="player">{{ player }}</li>
+        <li v-for="(player, index) in players" :key="index">
+          <span v-if="editIndex !== index">{{ player }}</span>
+          <input v-else v-model="editPlayer" @keyup.enter="savePlayer(index)" />
+          <button @click="editPlayerName(index)" v-if="editIndex !== index">Edit</button>
+          <button @click="savePlayer(index)" v-else>Save</button>
+        </li>
       </ul>
     </div>
   </div>
@@ -26,8 +31,20 @@ export default {
     return {
       newPlayer: '',
       players: ['John Smith', 'Henry Jones', 'John Doe'],
+      editIndex: null,
+      editPlayer: '',
     };
-  },
+    editPlayerName(index) {
+      this.editIndex = index;
+      this.editPlayer = this.players[index];
+    },
+    savePlayer(index) {
+      if (this.editPlayer.trim()) {
+        this.players.splice(index, 1, this.editPlayer.trim());
+        this.editIndex = null;
+        this.editPlayer = '';
+      }
+    },
   methods: {
     addPlayer() {
       if (this.newPlayer.trim()) {
