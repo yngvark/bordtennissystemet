@@ -1,56 +1,55 @@
 <template>
   <div class="player-entries">
     <h1>Player Entry</h1>
+    <div class="content">
+      <div class="add-player">
+        <input 
+          v-model="newPlayer" 
+          placeholder="Enter player name" 
+          @keyup.enter="addPlayer"
+        />
+        <button @click="addPlayer" :disabled="!newPlayer.trim()">Add Player</button>
+      </div>
 
-    <div class="add-player">
-      <label for="playerName">Enter player name:</label>
-      <input 
-        id="playerName" 
-        v-model="newPlayer" 
-        placeholder="Player name" 
-        @keyup.enter="addPlayer"
-      />
-      <button @click="addPlayer" :disabled="!newPlayer.trim()">Add Player</button>
+      <div class="player-list" v-if="players.length > 0">
+        <h2>Players</h2>
+        <ul>
+          <li v-for="(player, index) in players" :key="index" class="player-item">
+            <template v-if="editIndex !== index">
+              <span>{{ player }}</span>
+              <div class="player-actions">
+                <button @click="editPlayerName(index)" class="edit">Edit</button>
+                <button @click="deletePlayer(index)" class="delete">Delete</button>
+              </div>
+            </template>
+            <template v-else>
+              <input 
+                v-model="editPlayer" 
+                @keyup.enter="savePlayer(index)"
+                @keyup.esc="cancelEdit"
+                ref="editInput"
+              />
+              <div class="player-actions">
+                <button @click="savePlayer(index)" class="save">Save</button>
+                <button @click="cancelEdit" class="cancel">Cancel</button>
+              </div>
+            </template>
+          </li>
+        </ul>
+      </div>
+
+      <div v-else class="no-players">
+        <p>No players added yet. Add some players to get started!</p>
+      </div>
+
+      <button 
+        @click="createTournament" 
+        class="create-tournament" 
+        :disabled="players.length < 2"
+      >
+        Create Tournament
+      </button>
     </div>
-
-    <div class="player-list" v-if="players.length > 0">
-      <h2>Players:</h2>
-      <ul>
-        <li v-for="(player, index) in players" :key="index" class="player-item">
-          <template v-if="editIndex !== index">
-            <span>{{ player }}</span>
-            <div class="player-actions">
-              <button @click="editPlayerName(index)" class="edit">Edit</button>
-              <button @click="deletePlayer(index)" class="delete">Delete</button>
-            </div>
-          </template>
-          <template v-else>
-            <input 
-              v-model="editPlayer" 
-              @keyup.enter="savePlayer(index)"
-              @keyup.esc="cancelEdit"
-              ref="editInput"
-            />
-            <div class="player-actions">
-              <button @click="savePlayer(index)" class="save">Save</button>
-              <button @click="cancelEdit" class="cancel">Cancel</button>
-            </div>
-          </template>
-        </li>
-      </ul>
-    </div>
-
-    <div v-else class="no-players">
-      <p>No players added yet. Add some players to get started!</p>
-    </div>
-
-    <button 
-      @click="createTournament" 
-      class="create-tournament" 
-      :disabled="players.length < 2"
-    >
-      Create Tournament
-    </button>
   </div>
 </template>
 
@@ -90,11 +89,9 @@ export default {
       }
     },
     deletePlayer(index) {
-      if (confirm(`Are you sure you want to delete ${this.players[index]}?`)) {
-        this.players.splice(index, 1);
-        if (this.editIndex === index) {
-          this.cancelEdit();
-        }
+      this.players.splice(index, 1);
+      if (this.editIndex === index) {
+        this.cancelEdit();
       }
     },
     createTournament() {
@@ -111,9 +108,22 @@ export default {
 
 <style scoped>
 .player-entries {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+}
+
+.content {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .add-player {
@@ -124,7 +134,15 @@ export default {
 .add-player input {
   flex-grow: 1;
   margin-right: 10px;
-  padding: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.player-list h2 {
+  margin-bottom: 10px;
+  color: #444;
 }
 
 .player-list ul {
@@ -138,8 +156,9 @@ export default {
   align-items: center;
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .player-actions {
@@ -148,8 +167,12 @@ export default {
 }
 
 button {
-  padding: 5px 10px;
+  padding: 8px 12px;
   cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
 button:disabled {
@@ -159,18 +182,28 @@ button:disabled {
 
 .edit, .save { background-color: #4CAF50; color: white; }
 .delete, .cancel { background-color: #f44336; color: white; }
+.edit:hover, .save:hover { background-color: #45a049; }
+.delete:hover, .cancel:hover { background-color: #d32f2f; }
 
 .create-tournament {
+  display: block;
+  width: 100%;
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 12px;
   background-color: #2196F3;
   color: white;
   font-size: 16px;
+  font-weight: bold;
+}
+
+.create-tournament:hover {
+  background-color: #1976D2;
 }
 
 .no-players {
   text-align: center;
   color: #666;
   margin-top: 20px;
+  font-style: italic;
 }
 </style>
