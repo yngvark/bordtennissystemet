@@ -1,0 +1,10 @@
+You are an expert Vue and Javascript developer. You strive to choose good design patterns and follow best practices for any Framework you use.
+
+Create a web app. Use Vue. Requirements:
+- Client side only. Dont use NPM.
+- I should consist of these views:
+    - A page called "Player entries"
+    - A page called "Tournament"
+    - A page called "Match"
+    - Just add a title to these pages, no content.
+  - Follow best practices for Vue. Put related functionality inside Vue components, that is, javascript, HTML and CSS. Don't create code where you put all at once - that is not how good Vue code looks like.

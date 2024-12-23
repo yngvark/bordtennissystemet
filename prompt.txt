@@ -1,4 +1,4 @@
- Create a table tennis system, from now on called TTS. Here are the requirements:
+ Create a web app system, from now on called TTS. Here are the requirements:
 
  - TTS should be a client side web application. Use plain Javascript.
  - TTS should be supported on mobile devices.
