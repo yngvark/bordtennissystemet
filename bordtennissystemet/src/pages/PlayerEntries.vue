@@ -1,7 +1,7 @@
 <template>
   <div class="player-entries">
-    <h1>Player Entry</h1>
     <div class="content">
+      <h1>Player Entry</h1>
       <div class="add-player">
         <input 
           v-model="newPlayer" 
@@ -108,22 +108,27 @@ export default {
 
 <style scoped>
 .player-entries {
-  max-width: 800px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .content {
+  width: 100%;
+  max-width: 600px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  padding: 20px;
+  padding: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .add-player {
@@ -141,7 +146,7 @@ h1 {
 }
 
 .player-list h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: #444;
 }
 
@@ -167,7 +172,7 @@ h1 {
 }
 
 button {
-  padding: 8px 12px;
+  padding: 10px 15px;
   cursor: pointer;
   border: none;
   border-radius: 4px;
@@ -188,7 +193,7 @@ button:disabled {
 .create-tournament {
   display: block;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
   padding: 12px;
   background-color: #2196F3;
   color: white;
