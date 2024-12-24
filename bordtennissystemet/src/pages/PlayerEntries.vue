@@ -54,8 +54,14 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
+
 export default {
   name: 'PlayerEntries',
+  setup() {
+    const router = useRouter();
+    return { router };
+  },
   data() {
     return {
       newPlayer: '',
@@ -98,8 +104,8 @@ export default {
       if (this.players.length < 2) {
         alert('You need at least 2 players to create a tournament.');
       } else {
-        // Logic to create a tournament
-        alert('Tournament created!');
+        // Navigate to the tournament page
+        this.router.push('/tournament');
       }
     },
   },
