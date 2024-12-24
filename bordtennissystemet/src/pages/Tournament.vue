@@ -4,22 +4,10 @@
     
     <div class="matches">
       <h2>Matches</h2>
-      <div class="match completed">
-        <span class="player">John Smith</span>
-        <span class="score">11 - 5</span>
-        <span class="player">Henry Jones</span>
-        <span class="status">Completed</span>
-      </div>
-      <div class="match">
-        <span class="player">Henry Jones</span>
+      <div v-for="(match, index) in matches" :key="index" class="match">
+        <span class="player">{{ match.player1 }}</span>
         <span class="vs">vs</span>
-        <span class="player">John Doe</span>
-        <button class="play-button">Play Match</button>
-      </div>
-      <div class="match">
-        <span class="player">John Doe</span>
-        <span class="vs">vs</span>
-        <span class="player">John Smith</span>
+        <span class="player">{{ match.player2 }}</span>
         <button class="play-button">Play Match</button>
       </div>
     </div>
@@ -27,18 +15,40 @@
     <div class="ranking">
       <h2>Ranking</h2>
       <ol>
-        <li>John Smith (1)</li>
-        <li>Henry Jones (0)</li>
-        <li>John Doe (0)</li>
+        <li v-for="(player, index) in players" :key="index">
+          {{ player }} (0)
+        </li>
       </ol>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Tournament'
+<script setup>
+import { ref, onMounted } from 'vue';
+import { usePlayersStore } from '../stores/players';
+
+const playersStore = usePlayersStore();
+const players = ref([]);
+const matches = ref([]);
+
+function generateMatches(playerList) {
+  const matchList = [];
+  for (let i = 0; i < playerList.length; i++) {
+    for (let j = i + 1; j < playerList.length; j++) {
+      matchList.push({
+        player1: playerList[i],
+        player2: playerList[j],
+        score: null
+      });
+    }
+  }
+  return matchList;
 }
+
+onMounted(() => {
+  players.value = [...playersStore.players];
+  matches.value = generateMatches(players.value);
+});
 </script>
 
 <style scoped>
@@ -69,15 +79,12 @@ h1, h2 {
   flex: 1;
 }
 
-.score, .vs {
+.vs {
   margin: 0 10px;
 }
 
-.status, .play-button {
-  margin-left: auto;
-}
-
 .play-button {
+  margin-left: auto;
   background-color: #4CAF50;
   color: white;
   border: none;
