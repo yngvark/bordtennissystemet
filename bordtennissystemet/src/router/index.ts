@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PlayerEntries from '../pages/PlayerEntries.vue'
+import Tournament from '../pages/Tournament.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: PlayerEntries,
+    },
+    {
+      path: '/tournament',
+      name: 'tournament',
+      component: Tournament,
     },
     {
       path: '/about',
