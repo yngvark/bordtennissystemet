@@ -1,10 +1,7 @@
 <template>
   <div class="match-container">
     <h1>Play Match</h1>
-    <div v-if="winner" class="winner-message">
-      {{ winner }} wins the match!
-    </div>
-    <div v-else class="score-container">
+    <div class="score-container">
       <div class="player" @click="scorePoint('home')">
         {{ match.home }}
         <div class="score">{{ match.homeScore }}</div>
@@ -16,6 +13,9 @@
         <div class="score">{{ match.awayScore }}</div>
         <div v-if="currentServer === 'away'" class="server">🏓</div>
       </div>
+    </div>
+    <div v-if="winner" class="winner-message">
+      {{ winner }} wins the match!
     </div>
     <button @click="undoPoint" :disabled="!canUndo || winner">UNDO</button>
     <button @click="navigateToTournament">Back to Tournament</button>
@@ -129,5 +129,8 @@ button {
   font-weight: bold;
   color: green;
   margin: 20px 0;
+  padding: 10px;
+  background-color: #e6ffe6;
+  border-radius: 5px;
 }
 </style>
