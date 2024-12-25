@@ -54,6 +54,11 @@ const canUndo = computed(() => scoreHistory.value.length > 0);
 function giveServe(player) {
   currentServer.value = player;
   serveGiven.value = true;
+  scoreHistory.value.push({ 
+    ...match.value, 
+    server: currentServer.value, 
+    serveGiven: true 
+  });
 }
 
 function scorePoint(player) {
@@ -66,7 +71,11 @@ function scorePoint(player) {
     updatedMatch.awayScore++;
   }
   
-  scoreHistory.value.push({ ...updatedMatch, server: currentServer.value });
+  scoreHistory.value.push({ 
+    ...updatedMatch, 
+    server: currentServer.value, 
+    serveGiven: true 
+  });
   updateServer();
   matchesStore.updateMatch(updatedMatch);
   checkWinner();
@@ -77,7 +86,9 @@ function undoPoint() {
     const previousState = scoreHistory.value.pop();
     matchesStore.updateMatch(previousState);
     currentServer.value = previousState.server;
+    serveGiven.value = previousState.serveGiven;
     winner.value = null;
+    
     if (scoreHistory.value.length === 0) {
       serveGiven.value = false;
       currentServer.value = null;
