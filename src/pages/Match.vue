@@ -87,14 +87,13 @@ function undoPoint() {
     matchesStore.updateMatch(previousState);
     currentServer.value = previousState.server;
     serveGiven.value = previousState.serveGiven;
+    match.value = { ...previousState };
     
     if (scoreHistory.value.length === 0) {
       serveGiven.value = false;
       currentServer.value = null;
     }
     
-    // Reset winner and recheck
-    winner.value = null;
     checkWinner();
   }
 }
