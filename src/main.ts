@@ -3,7 +3,7 @@ import './assets/common.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { persistedState } from './plugins/persistedState'
+import { persistedState } from '@/plugins/persistedState'
 
 import App from './App.vue'
 import router from './router'
