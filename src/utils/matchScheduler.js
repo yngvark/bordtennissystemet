@@ -17,6 +17,8 @@ export function scheduleMatches(players) {
         awayCount[player] = 0;
     });
     
+    let matchId = 1; // Initialize match ID counter
+    
     for (let round = 0; round < rounds; round++) {
         for (let i = 0; i < half; i++) {
             const home = playersList[i];
@@ -42,7 +44,7 @@ export function scheduleMatches(players) {
                     }
                 }
                 
-                schedule.push({ home: matchHome, away: matchAway });
+                schedule.push({ id: matchId++, home: matchHome, away: matchAway, homeScore: 0, awayScore: 0 });
                 homeCount[matchHome]++;
                 awayCount[matchAway]++;
             }

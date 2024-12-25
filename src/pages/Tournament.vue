@@ -32,7 +32,7 @@ const playersStore = usePlayersStore();
 const matchesStore = useMatchesStore();
 
 function navigateToMatch(matchId) {
-  router.push({ name: 'match', params: { id: matchId.toString() } });
+  router.push({ name: 'match', params: { id: matchId } });
 }
 
 onMounted(() => {
