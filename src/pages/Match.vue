@@ -107,10 +107,10 @@ function navigateToTournament() {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
   align-items: center;
+  justify-items: center;
 }
 
 .player-name {
@@ -121,6 +121,7 @@ function navigateToTournament() {
 .score {
   font-size: 48px;
   font-weight: bold;
+  align-self: center;
 }
 
 .vs {
@@ -129,7 +130,7 @@ function navigateToTournament() {
 }
 
 .server {
-  margin-top: 5px;
+  height: 24px; /* Fixed height for the server indicator */
 }
 
 button {
