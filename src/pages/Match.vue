@@ -42,7 +42,7 @@ const matchesStore = useMatchesStore();
 const matchId = parseInt(route.params.id);
 const match = computed(() => matchesStore.getMatchById(matchId));
 
-const currentServer = ref('home');
+const currentServer = ref(match.value.id % 2 === 0 ? 'home' : 'away');
 const scoreHistory = ref([]);
 const winner = ref(null);
 
@@ -75,7 +75,7 @@ function undoPoint() {
 
 function updateServer() {
   const totalScore = match.value.homeScore + match.value.awayScore;
-  if (totalScore % 2 === 0) {
+  if (totalScore % 2 === 1) {
     currentServer.value = currentServer.value === 'home' ? 'away' : 'home';
   }
 }
