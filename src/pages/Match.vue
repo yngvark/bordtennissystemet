@@ -9,8 +9,8 @@
           <span v-if="currentServer === 'home'">🏓</span>
           <span v-else>&nbsp;</span>
         </div>
-        <button v-if="!serveGiven" @click="giveServe('home')" class="blue-button">Give Serve</button>
-        <button v-else @click="scorePoint('home')" :disabled="!!winner" class="green-button">Score</button>
+        <button v-if="!serveGiven" @click="giveServe('home')" class="serve-button">Give Serve</button>
+        <button v-else @click="scorePoint('home')" :disabled="!!winner" class="score-button">Score</button>
       </div>
       <div class="vs">-</div>
       <div class="player">
@@ -20,8 +20,8 @@
           <span v-if="currentServer === 'away'">🏓</span>
           <span v-else>&nbsp;</span>
         </div>
-        <button v-if="!serveGiven" @click="giveServe('away')" class="blue-button">Give Serve</button>
-        <button v-else @click="scorePoint('away')" :disabled="!!winner" class="green-button">Score</button>
+        <button v-if="!serveGiven" @click="giveServe('away')" class="serve-button">Give Serve</button>
+        <button v-else @click="scorePoint('away')" :disabled="!!winner" class="score-button">Score</button>
       </div>
     </div>
     <div v-if="winner" class="winner-message">
@@ -190,19 +190,19 @@ function navigateToTournament() {
   border-radius: 5px;
 }
 
-.blue-button {
+.serve-button {
   background-color: #007bff;
 }
 
-.blue-button:hover {
+.serve-button:hover {
   background-color: #0056b3;
 }
 
-.green-button {
+.score-button {
   background-color: #4CAF50;
 }
 
-.green-button:hover {
+.score-button:hover {
   background-color: #45a049;
 }
 
