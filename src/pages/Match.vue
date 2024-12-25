@@ -9,7 +9,8 @@
           <span v-if="currentServer === 'home'">🏓</span>
           <span v-else>&nbsp;</span>
         </div>
-        <button @click="scorePoint('home')" :disabled="!!winner">Score</button>
+        <button v-if="!serveGiven" @click="giveServe('home')" class="give-serve-btn">Give Serve</button>
+        <button v-else @click="scorePoint('home')" :disabled="!!winner">Score</button>
       </div>
       <div class="vs">-</div>
       <div class="player">
@@ -19,7 +20,8 @@
           <span v-if="currentServer === 'away'">🏓</span>
           <span v-else>&nbsp;</span>
         </div>
-        <button @click="scorePoint('away')" :disabled="!!winner">Score</button>
+        <button v-if="!serveGiven" @click="giveServe('away')" class="give-serve-btn">Give Serve</button>
+        <button v-else @click="scorePoint('away')" :disabled="!!winner">Score</button>
       </div>
     </div>
     <div v-if="winner" class="winner-message">
@@ -42,14 +44,20 @@ const matchesStore = useMatchesStore();
 const matchId = parseInt(route.params.id);
 const match = computed(() => matchesStore.getMatchById(matchId));
 
-const currentServer = ref(match.value.id % 2 === 0 ? 'home' : 'away');
+const currentServer = ref(null);
 const scoreHistory = ref([]);
 const winner = ref(null);
+const serveGiven = ref(false);
 
 const canUndo = computed(() => scoreHistory.value.length > 0);
 
+function giveServe(player) {
+  currentServer.value = player;
+  serveGiven.value = true;
+}
+
 function scorePoint(player) {
-  if (winner.value) return;
+  if (winner.value || !serveGiven.value) return;
 
   const updatedMatch = { ...match.value };
   if (player === 'home') {
@@ -70,6 +78,10 @@ function undoPoint() {
     matchesStore.updateMatch(previousState);
     currentServer.value = previousState.server;
     winner.value = null;
+    if (scoreHistory.value.length === 0) {
+      serveGiven.value = false;
+      currentServer.value = null;
+    }
   }
 }
 
@@ -205,5 +217,13 @@ button:disabled {
   padding: 10px;
   background-color: #e6ffe6;
   border-radius: 5px;
+}
+
+.give-serve-btn {
+  background-color: #007bff;
+}
+
+.give-serve-btn:hover {
+  background-color: #0056b3;
 }
 </style>
