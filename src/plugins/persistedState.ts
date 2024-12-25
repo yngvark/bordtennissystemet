@@ -1,6 +1,6 @@
-import { PiniaPluginContext } from 'pinia'
+import { PiniaPlugin } from 'pinia'
 
-export function persistedState(context: PiniaPluginContext) {
+export const persistedState: PiniaPlugin = (context) => {
   const storageKey = `${context.store.$id}`
   const storedState = localStorage.getItem(storageKey)
 
