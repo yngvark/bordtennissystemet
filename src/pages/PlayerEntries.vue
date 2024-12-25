@@ -71,6 +71,9 @@
   border-radius: 8px;
   padding: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-height: 400px; /* Add a minimum height */
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -93,6 +96,12 @@ h1 {
   font-size: 16px;
 }
 
+.player-list {
+  flex-grow: 1; /* Allow the player list to grow and fill available space */
+  display: flex;
+  flex-direction: column;
+}
+
 .player-list h2 {
   margin-bottom: 15px;
   color: #444;
@@ -101,6 +110,8 @@ h1 {
 .player-list ul {
   list-style-type: none;
   padding: 0;
+  flex-grow: 1; /* Allow the list to grow within the player-list */
+  overflow-y: auto; /* Add scrolling if the list gets too long */
 }
 
 .player-item {
