@@ -18,11 +18,11 @@ import AppFooter from '@/components/AppFooter.vue'
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* This ensures the container takes at least the full viewport height */
 }
 
 .app-content {
-  flex: 1;
+  flex: 1; /* This allows the content to grow and push the footer down */
   padding: 2rem;
 }
 </style>
