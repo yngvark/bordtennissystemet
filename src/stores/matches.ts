@@ -17,5 +17,9 @@ export const useMatchesStore = defineStore('matches', () => {
     }
   }
 
-  return { matches, setMatches, updateMatch }
+  function $reset() {
+    matches.value = []
+  }
+
+  return { matches, setMatches, updateMatch, $reset }
 })

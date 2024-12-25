@@ -16,5 +16,9 @@ export const usePlayersStore = defineStore('players', () => {
     players.value[index] = newName
   }
 
-  return { players, addPlayer, removePlayer, updatePlayer }
+  function $reset() {
+    players.value = []
+  }
+
+  return { players, addPlayer, removePlayer, updatePlayer, $reset }
 })
