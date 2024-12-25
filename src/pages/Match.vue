@@ -107,21 +107,26 @@ function navigateToTournament() {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  display: grid;
-  grid-template-rows: auto 1fr auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-items: center;
 }
 
 .player-name {
   font-size: 18px;
   font-weight: bold;
+  height: 25px;
+  display: flex;
+  align-items: center;
 }
 
 .score {
   font-size: 48px;
   font-weight: bold;
-  align-self: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
 }
 
 .vs {
@@ -130,7 +135,31 @@ function navigateToTournament() {
 }
 
 .server {
-  height: 24px; /* Fixed height for the server indicator */
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.player button {
+  height: 40px;
+  width: 100%;
+  margin: 5px 0;
+  padding: 0;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.player button:hover {
+  background-color: #45a049;
+}
+
+.player button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
 
 button {
