@@ -5,24 +5,16 @@ import AppFooter from '@/components/AppFooter.vue'
 </script>
 
 <template>
-  <div class="app-container">
-    <AppHeader />
-    <main class="app-content">
-      <RouterView />
-    </main>
-    <AppFooter />
-  </div>
+  <AppHeader />
+  <main class="app-content">
+    <RouterView />
+  </main>
+  <AppFooter />
 </template>
 
 <style>
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* This ensures the container takes at least the full viewport height */
-}
-
 .app-content {
-  flex: 1; /* This allows the content to grow and push the footer down */
+  flex: 1;
   padding: 2rem;
 }
 </style>
