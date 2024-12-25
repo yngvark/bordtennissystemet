@@ -231,10 +231,10 @@ button:disabled {
 }
 
 .give-serve-btn {
-  background-color: #007bff;
+  background-color: #FF0000;
 }
 
 .give-serve-btn:hover {
-  background-color: #0056b3;
+  background-color: #FF0000;
 }
 </style>
