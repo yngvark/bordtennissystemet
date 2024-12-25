@@ -1,4 +1,4 @@
-import { PiniaPluginContext } from 'pinia'
+import type { PiniaPluginContext } from 'pinia'
 
 export const persistedState = (context: PiniaPluginContext) => {
   const storageKey = `${context.store.$id}`
