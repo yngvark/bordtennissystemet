@@ -1,5 +1,5 @@
 <template>
-  <div class="player-entries">
+  <div class="page-container">
     <div class="content">
       <h1>Player Entry</h1>
       <div class="add-player">
@@ -55,31 +55,7 @@
 
 
 <style scoped>
-.player-entries {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.content {
-  width: 100%;
-  max-width: 600px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  padding: 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  min-height: 400px; /* Add a minimum height */
-  min-width: 500px;
-}
-
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 30px;
-}
+/* Styles specific to PlayerEntries */
 
 .add-player {
   display: flex;

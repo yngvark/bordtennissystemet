@@ -1,15 +1,17 @@
 <template>
-  <div class="tournament">
-    <h1>Tournament</h1>
-    
-    <div class="matches">
-      <h2>Matches</h2>
-      <MatchList :matches="matchesStore.matches" />
-    </div>
+  <div class="page-container">
+    <div class="content">
+      <h1>Tournament</h1>
+      
+      <div class="section matches">
+        <h2>Matches</h2>
+        <MatchList :matches="matchesStore.matches" />
+      </div>
 
-    <div class="ranking">
-      <h2>Ranking</h2>
-      <RankingList :players="playersStore.players" />
+      <div class="section ranking">
+        <h2>Ranking</h2>
+        <RankingList :players="playersStore.players" />
+      </div>
     </div>
   </div>
 </template>
@@ -33,16 +35,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.tournament {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h1, h2 {
-  color: #333;
-}
-
+/* Additional styles specific to the Tournament page can be added here */
 .matches, .ranking {
   margin-top: 20px;
 }
