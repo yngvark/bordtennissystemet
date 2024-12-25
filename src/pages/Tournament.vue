@@ -5,7 +5,7 @@
       
       <div class="section matches">
         <h2>Matches</h2>
-        <MatchList :matches="matchesStore.matches" />
+        <MatchList :matches="matchesStore.matches" @matchClick="navigateToMatch" />
       </div>
 
       <div class="section ranking">
@@ -18,14 +18,20 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { usePlayersStore } from '../stores/players';
 import { useMatchesStore } from '../stores/matches';
 import { scheduleMatches } from '../utils/matchScheduler';
 import MatchList from '../components/MatchList.vue';
 import RankingList from '../components/RankingList.vue';
 
+const router = useRouter();
 const playersStore = usePlayersStore();
 const matchesStore = useMatchesStore();
+
+function navigateToMatch(matchId) {
+  router.push({ name: 'match', params: { id: matchId } });
+}
 
 onMounted(() => {
   const players = [...playersStore.players];

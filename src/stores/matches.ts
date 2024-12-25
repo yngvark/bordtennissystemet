@@ -21,5 +21,9 @@ export const useMatchesStore = defineStore('matches', () => {
     matches.value = []
   }
 
-  return { matches, setMatches, updateMatch, $reset }
+  function getMatchById(id) {
+    return matches.value.find(match => match.id === id)
+  }
+
+  return { matches, setMatches, updateMatch, getMatchById, $reset }
 })
