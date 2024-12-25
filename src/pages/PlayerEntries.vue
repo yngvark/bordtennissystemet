@@ -72,8 +72,7 @@
   padding: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-height: 400px; /* Add a minimum height */
-  display: flex;
-  flex-direction: column;
+  min-width: 500px;
 }
 
 h1 {
