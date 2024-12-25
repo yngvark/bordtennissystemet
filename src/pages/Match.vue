@@ -2,16 +2,18 @@
   <div class="match-container">
     <h1>Play Match</h1>
     <div class="score-container">
-      <div class="player" @click="scorePoint('home')">
-        {{ match.home }}
+      <div class="player">
+        <div class="player-name">{{ match.home }}</div>
         <div class="score">{{ match.homeScore }}</div>
         <div v-if="currentServer === 'home'" class="server">🏓</div>
+        <button @click="scorePoint('home')" :disabled="!!winner">Score</button>
       </div>
       <div class="vs">-</div>
-      <div class="player" @click="scorePoint('away')">
-        {{ match.away }}
+      <div class="player">
+        <div class="player-name">{{ match.away }}</div>
         <div class="score">{{ match.awayScore }}</div>
         <div v-if="currentServer === 'away'" class="server">🏓</div>
+        <button @click="scorePoint('away')" :disabled="!!winner">Score</button>
       </div>
     </div>
     <div v-if="winner" class="winner-message">
@@ -100,19 +102,30 @@ function navigateToTournament() {
 }
 
 .player {
-  cursor: pointer;
+  width: 200px;
+  height: 200px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-name {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .score {
-  font-size: 24px;
+  font-size: 48px;
   font-weight: bold;
 }
 
 .vs {
   font-size: 24px;
+  margin: 0 20px;
 }
 
 .server {
@@ -121,7 +134,22 @@ function navigateToTournament() {
 
 button {
   margin: 10px;
-  padding: 5px 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
 
 .winner-message {
