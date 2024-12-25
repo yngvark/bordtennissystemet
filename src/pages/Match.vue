@@ -27,7 +27,7 @@
     <div v-if="winner" class="winner-message">
       {{ winner }} wins the match!
     </div>
-    <button @click="undoPoint" :disabled="!canUndo || winner">UNDO</button>
+    <button @click="undoPoint" :disabled="!canUndo">UNDO</button>
     <button @click="navigateToTournament">Back to Tournament</button>
   </div>
 </template>
@@ -82,7 +82,7 @@ function scorePoint(player) {
 }
 
 function undoPoint() {
-  if (canUndo.value && !winner.value) {
+  if (canUndo.value) {
     const previousState = scoreHistory.value.pop();
     matchesStore.updateMatch(previousState);
     currentServer.value = previousState.server;
@@ -93,6 +93,9 @@ function undoPoint() {
       serveGiven.value = false;
       currentServer.value = null;
     }
+    
+    // Recheck for winner after undoing
+    checkWinner();
   }
 }
 
