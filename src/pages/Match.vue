@@ -87,8 +87,6 @@ function undoPoint() {
     matchesStore.updateMatch(previousState);
     currentServer.value = previousState.server;
     serveGiven.value = previousState.serveGiven;
-    match.value = { ...previousState };
-    console.log("match.value", match.value);
     
     if (scoreHistory.value.length === 0) {
       serveGiven.value = false;
