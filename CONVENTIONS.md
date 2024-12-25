@@ -1,4 +1,5 @@
 - Strive to choose good design patterns and follow best practices for any framework in use, such as Vue.
 - Aim to make small changes at the time. Don't edit more than one component at the time if possible, per commit.
 - The application should be able to be built into static files that can be hosted on platforms like GitHub Pages.
+- The web app should be mobile friendly.
 - Always follow UX and UU conventions when editing the web app.
