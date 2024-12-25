@@ -5,14 +5,20 @@
       <div class="player">
         <div class="player-name">{{ match.home }}</div>
         <div class="score">{{ match.homeScore }}</div>
-        <div v-if="currentServer === 'home'" class="server">🏓</div>
+        <div class="server">
+          <span v-if="currentServer === 'home'">🏓</span>
+          <span v-else>&nbsp;</span>
+        </div>
         <button @click="scorePoint('home')" :disabled="!!winner">Score</button>
       </div>
       <div class="vs">-</div>
       <div class="player">
         <div class="player-name">{{ match.away }}</div>
         <div class="score">{{ match.awayScore }}</div>
-        <div v-if="currentServer === 'away'" class="server">🏓</div>
+        <div class="server">
+          <span v-if="currentServer === 'away'">🏓</span>
+          <span v-else>&nbsp;</span>
+        </div>
         <button @click="scorePoint('away')" :disabled="!!winner">Score</button>
       </div>
     </div>
@@ -138,6 +144,15 @@ function navigateToTournament() {
   height: 24px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.server span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
 }
 
 .player button {
