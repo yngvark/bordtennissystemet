@@ -87,14 +87,14 @@ function undoPoint() {
     matchesStore.updateMatch(previousState);
     currentServer.value = previousState.server;
     serveGiven.value = previousState.serveGiven;
-    winner.value = null;
     
     if (scoreHistory.value.length === 0) {
       serveGiven.value = false;
       currentServer.value = null;
     }
     
-    // Recheck for winner after undoing
+    // Reset winner and recheck
+    winner.value = null;
     checkWinner();
   }
 }
@@ -107,10 +107,12 @@ function updateServer() {
 }
 
 function checkWinner() {
-  if (match.value.homeScore >= 11) {
+  if (match.value.homeScore >= 11 && match.value.homeScore - match.value.awayScore >= 2) {
     winner.value = match.value.home;
-  } else if (match.value.awayScore >= 11) {
+  } else if (match.value.awayScore >= 11 && match.value.awayScore - match.value.homeScore >= 2) {
     winner.value = match.value.away;
+  } else {
+    winner.value = null;
   }
 }
 
