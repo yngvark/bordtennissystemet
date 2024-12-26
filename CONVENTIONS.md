@@ -3,3 +3,4 @@
 - The application should be able to be built into static files that can be hosted on platforms like GitHub Pages.
 - The web app should be mobile friendly.
 - Always follow UX and UU conventions when editing the web app.
+- In Javascript/Typescript code, always add debug log lines, to ensure that future debugging is easier.
