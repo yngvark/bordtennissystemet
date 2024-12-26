@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { Match } from '../types'
+import type { Match } from '../types'
 
 export const useMatchesStore = defineStore('matches', () => {
   const matches = ref<Match[]>([])
