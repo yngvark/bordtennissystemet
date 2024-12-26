@@ -147,50 +147,60 @@ button:disabled {
 }
 </style>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { usePlayersStore } from '../stores/players';
+import { Player } from '../types';
 
 const router = useRouter();
 const playersStore = usePlayersStore();
 
 const newPlayer = ref('');
-const editIndex = ref(null);
+const editIndex = ref<number | null>(null);
 const editPlayer = ref('');
 
-function editPlayerName(index) {
+function editPlayerName(index: number): void {
   editIndex.value = index;
-  editPlayer.value = playersStore.players[index];
+  editPlayer.value = playersStore.players[index].name;
 }
 
-function savePlayer(index) {
+function savePlayer(index: number): void {
   if (editPlayer.value.trim()) {
-    playersStore.updatePlayer(index, editPlayer.value.trim());
+    const updatedPlayer: Player = {
+      ...playersStore.players[index],
+      name: editPlayer.value.trim()
+    };
+    playersStore.updatePlayer(index, updatedPlayer);
     cancelEdit();
   }
 }
 
-function cancelEdit() {
+function cancelEdit(): void {
   editIndex.value = null;
   editPlayer.value = '';
 }
 
-function addPlayer() {
+function addPlayer(): void {
   if (newPlayer.value.trim()) {
-    playersStore.addPlayer(newPlayer.value.trim());
+    const player: Player = {
+      id: Date.now().toString(), // Simple way to generate a unique ID
+      name: newPlayer.value.trim(),
+      score: 0
+    };
+    playersStore.addPlayer(player);
     newPlayer.value = '';
   }
 }
 
-function deletePlayer(index) {
+function deletePlayer(index: number): void {
   playersStore.removePlayer(index);
   if (editIndex.value === index) {
     cancelEdit();
   }
 }
 
-function createTournament() {
+function createTournament(): void {
   if (playersStore.players.length < 2) {
     alert('You need at least 2 players to create a tournament.');
   } else {
