@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { usePlayersStore } from '../stores/players';
@@ -31,12 +31,12 @@ const router = useRouter();
 const playersStore = usePlayersStore();
 const matchesStore = useMatchesStore();
 
-function navigateToMatch(matchId) {
+function navigateToMatch(matchId: string): void {
   router.push({ name: 'match', params: { id: matchId } });
 }
 
 onMounted(() => {
-  const players = [...playersStore.players];
+  const players: string[] = [...playersStore.players];
   const scheduledMatches = scheduleMatches(players);
   matchesStore.setMatches(scheduledMatches);
 });
