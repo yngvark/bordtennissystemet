@@ -6,7 +6,7 @@
       <div class="section matches">
         <h2>Matches</h2>
         <div v-for="match in matchesStore.matches" :key="match.id" class="match-item">
-          <span>{{ match.home }} vs {{ match.away }}</span>
+          <span>{{ match.home.name }} vs {{ match.away.name }}</span>
           <button @click="navigateToMatch(match.id)">Play Match</button>
         </div>
       </div>
