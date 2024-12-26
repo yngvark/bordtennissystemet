@@ -54,3 +54,5 @@
 </template>
 
 <style src="./PlayerEntries.css" scoped></style>
+
+<script lang="ts" src="./PlayerEntries.ts"></script>
