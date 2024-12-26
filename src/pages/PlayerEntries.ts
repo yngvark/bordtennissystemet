@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { usePlayersStore } from '../stores/players';
-import { Player } from '../types';
+import type { Player } from '../types';
 
 const router = useRouter();
 const playersStore = usePlayersStore();
