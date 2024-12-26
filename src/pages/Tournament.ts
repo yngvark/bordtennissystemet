@@ -11,17 +11,22 @@ export default defineComponent({
     RankingList,
   },
   setup() {
+    console.log('Tournament component setup started');
     const router = useRouter();
     const playersStore = usePlayersStore();
     const matchesStore = useMatchesStore();
 
     function navigateToMatch(matchId: string): void {
+      console.log('Navigating to match:', matchId);
       router.push({ name: 'match', params: { id: matchId } });
     }
 
     onMounted(() => {
+      console.log('Tournament component mounted');
       const players: string[] = [...playersStore.players];
+      console.log('Players:', players);
       const scheduledMatches = scheduleMatches(players);
+      console.log('Scheduled matches:', scheduledMatches);
       matchesStore.setMatches(scheduledMatches);
     });
 
