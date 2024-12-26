@@ -1,0 +1,27 @@
+  /* Additional styles specific to the Tournament page can be added here */
+.matches, .ranking {
+  margin-top: 20px;
+}
+
+.match-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.match-item button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.match-item button:hover {
+  background-color: #45a049;
+}
