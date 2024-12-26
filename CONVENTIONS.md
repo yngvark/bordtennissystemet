@@ -3,6 +3,3 @@
 - The application should be able to be built into static files that can be hosted on platforms like GitHub Pages.
 - The web app should be mobile friendly.
 - Always follow UX and UU conventions when editing the web app.
-- For Vue Pages, use the following structure:
-  - 1) HTML, 2) CSS, 3) JavaScript/Typescript.
-  - Use a three line banner/separator between each section.
