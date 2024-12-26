@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useMatchesStore } from '../stores/matches';
-import { Match } from '../types';
+import type { Match } from '../types';
 
 export default {
     setup() {
