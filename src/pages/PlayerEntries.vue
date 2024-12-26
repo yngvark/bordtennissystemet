@@ -16,7 +16,7 @@
         <ul>
           <li v-for="(player, index) in playersStore.players" :key="index" class="player-item">
             <template v-if="editIndex !== index">
-              <span>{{ player }}</span>
+              <span>{{ player.name }}</span>
               <div class="player-actions">
                 <button @click="editPlayerName(index)" class="edit">Edit</button>
                 <button @click="deletePlayer(index)" class="delete">Delete</button>
