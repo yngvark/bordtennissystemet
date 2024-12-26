@@ -12,3 +12,5 @@ export interface Match {
   awayScore?: number;
   completed: boolean;
 }
+
+export type { Player, Match };
