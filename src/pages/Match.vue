@@ -32,6 +32,8 @@
   </div>
 </template>
 
+<script lang="ts" src="./Match.ts"></script>
+
 <style scoped>
 .match-container {
   max-width: 600px;
