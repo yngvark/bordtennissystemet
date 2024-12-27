@@ -10,11 +10,9 @@ export const useMatchesStore = defineStore('matches', () => {
   }
 
   function updateMatch(updatedMatch: Match): void {
-    const index = matches.value.findIndex(match => 
-      match.home === updatedMatch.home && match.away === updatedMatch.away
-    )
+    const index = matches.value.findIndex(match => match.id === updatedMatch.id)
     if (index !== -1) {
-      matches.value[index] = updatedMatch
+      matches.value[index] = { ...matches.value[index], ...updatedMatch }
     }
   }
 
@@ -23,7 +21,9 @@ export const useMatchesStore = defineStore('matches', () => {
   }
 
   function getMatchById(id: string): Match | undefined {
-    return matches.value.find(match => match.id === id)
+    const match = matches.value.find(match => match.id === id)
+    console.log('Retrieved match:', match)
+    return match
   }
 
   return { matches, setMatches, updateMatch, getMatchById, $reset }

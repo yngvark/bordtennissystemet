@@ -11,6 +11,7 @@ export interface Match {
   homeScore?: number;
   awayScore?: number;
   completed: boolean;
+  winner?: Player;
 }
 
 export type { Player, Match };

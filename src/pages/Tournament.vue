@@ -7,7 +7,11 @@
         <h2>Matches</h2>
         <div v-for="match in matchesStore.matches" :key="match.id" class="match-item">
           <span>{{ match.home.name }} vs {{ match.away.name }}</span>
-          <button @click="navigateToMatch(match.id)">Play Match</button>
+          <template v-if="match.completed">
+            <span>Result: {{ match.homeScore }} - {{ match.awayScore }}</span>
+            <span>Winner: {{ match.winner?.name }}</span>
+          </template>
+          <button v-else @click="navigateToMatch(match.id)">Play Match</button>
         </div>
       </div>
 

@@ -78,11 +78,24 @@ export default {
         function checkWinner(): void {
             if (!match.value) return;
             if ((match.value.homeScore || 0) >= 11 && (match.value.homeScore || 0) - (match.value.awayScore || 0) >= 2) {
-                winner.value = match.value.home;
+                winner.value = match.value.home.name;
+                updateMatchCompletion(match.value.home);
             } else if ((match.value.awayScore || 0) >= 11 && (match.value.awayScore || 0) - (match.value.homeScore || 0) >= 2) {
-                winner.value = match.value.away;
+                winner.value = match.value.away.name;
+                updateMatchCompletion(match.value.away);
             } else {
                 winner.value = null;
+            }
+        }
+
+        function updateMatchCompletion(winningPlayer: any): void {
+            if (match.value) {
+                const updatedMatch = {
+                    ...match.value,
+                    completed: true,
+                    winner: winningPlayer
+                };
+                matchesStore.updateMatch(updatedMatch);
             }
         }
 
