@@ -30,10 +30,13 @@ export default defineComponent({
       matchesStore.setMatches(scheduledMatches);
     });
 
+    const playerNames = computed(() => playersStore.players.map(player => player.name));
+
     return {
       navigateToMatch,
       playersStore,
       matchesStore,
+      playerNames,
     };
   },
 });

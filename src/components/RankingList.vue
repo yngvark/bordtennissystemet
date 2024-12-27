@@ -24,18 +24,18 @@ const matchesStore = useMatchesStore();
 
 const playerStats = computed(() => {
   const stats = {};
-  props.players.forEach(player => {
-    stats[player] = { name: player, wins: 0, losses: 0 };
+  props.players.forEach(playerName => {
+    stats[playerName] = { name: playerName, wins: 0, losses: 0 };
   });
 
   matchesStore.matches.forEach(match => {
-    if (match.played) {
+    if (match.completed) {
       if (match.homeScore > match.awayScore) {
-        stats[match.home].wins++;
-        stats[match.away].losses++;
+        stats[match.home.name].wins++;
+        stats[match.away.name].losses++;
       } else if (match.homeScore < match.awayScore) {
-        stats[match.home].losses++;
-        stats[match.away].wins++;
+        stats[match.home.name].losses++;
+        stats[match.away.name].wins++;
       }
     }
   });
