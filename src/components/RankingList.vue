@@ -9,41 +9,50 @@
   </div>
 </template>
 
-<script setup>
+<!--------------------------------------------------------------------------------
+  CODE
+  -------------------------------------------------------------------------------->
+<script setup lang="ts">
 import { computed } from 'vue';
 import { useMatchesStore } from '../stores/matches';
+import type { Player } from '../types';
 
-const props = defineProps({
-  players: {
-    type: Array,
-    required: true
-  }
-});
+interface PlayerStats {
+  name: string;
+  wins: number;
+  losses: number;
+}
+
+const props = defineProps<{
+  players: Player[];
+}>();
 
 const matchesStore = useMatchesStore();
 
-const playerStats = computed(() => {
-  const stats = {};
-  props.players.forEach(playerName => {
-    stats[playerName] = { name: playerName, wins: 0, losses: 0 };
+const playerStats = computed<PlayerStats[]>(() => {
+  const stats: Record<string, PlayerStats> = {};
+  props.players.forEach(player => {
+    stats[player.name] = { name: player.name, wins: 0, losses: 0 };
   });
 
   matchesStore.matches.forEach(match => {
-    if (match.completed) {
-      if (match.homeScore > match.awayScore) {
-        stats[match.home.name].wins++;
-        stats[match.away.name].losses++;
-      } else if (match.homeScore < match.awayScore) {
-        stats[match.home.name].losses++;
-        stats[match.away.name].wins++;
-      }
+    if (!match.completed) {
+      return;
+    }
+
+    if (match.homeScore > match.awayScore) {
+      stats[match.home.name].wins++;
+      stats[match.away.name].losses++;
+    } else if (match.homeScore < match.awayScore) {
+      stats[match.home.name].losses++;
+      stats[match.away.name].wins++;
     }
   });
 
   return Object.values(stats);
 });
 
-const sortedPlayers = computed(() => {
+const sortedPlayers = computed<PlayerStats[]>(() => {
   return playerStats.value.sort((a, b) => {
     if (b.wins !== a.wins) {
       return b.wins - a.wins;
@@ -52,7 +61,9 @@ const sortedPlayers = computed(() => {
   });
 });
 </script>
-
+<!--------------------------------------------------------------------------------
+  CSS
+  -------------------------------------------------------------------------------->
 <style scoped>
 .ranking-list {
   margin-top: 20px;

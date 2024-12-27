@@ -13,7 +13,7 @@
 
       <div class="section ranking">
         <h2>Ranking</h2>
-        <RankingList :players="playersStore.players.map(player => player.name)" />
+        <RankingList :players="playersStore.players" />
       </div>
     </div>
   </div>

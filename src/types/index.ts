@@ -6,8 +6,8 @@ export interface Player {
 
 export interface Match {
   id: string;
-  home: string;
-  away: string;
+  home: Player;
+  away: Player;
   homeScore?: number;
   awayScore?: number;
   completed: boolean;
