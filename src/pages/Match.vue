@@ -5,7 +5,7 @@
     <div class="score-container">
 
       <div class="player">
-        <div class="player-name">{{ match.home }}</div>
+        <div class="player-name">{{ match.home.name }}</div>
         <div class="score">{{ match.homeScore }}</div>
         <div class="server">
           <span v-if="currentServer === 'home'">🏓</span>
@@ -17,7 +17,7 @@
       <div class="vs">-</div>
 
       <div class="player">
-        <div class="player-name">{{ match.away }}</div>
+        <div class="player-name">{{ match.away.name }}</div>
         <div class="score">{{ match.awayScore }}</div>
         <div class="server">
           <span v-if="currentServer === 'away'">🏓</span>
@@ -30,7 +30,7 @@
     </div>
 
     <div v-if="winner" class="winner-message">
-      {{ winner }} wins the match!
+      {{ winner.name }} wins the match!
     </div>
 
     <button @click="undoPoint" :disabled="!canUndo">UNDO</button>
