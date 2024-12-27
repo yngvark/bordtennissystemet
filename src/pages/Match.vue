@@ -3,6 +3,7 @@
 
     <h1>Play Match</h1>
     <div class="score-container">
+
       <div class="player">
         <div class="player-name">{{ match.home }}</div>
         <div class="score">{{ match.homeScore }}</div>
@@ -25,6 +26,7 @@
         <button v-if="!serveGiven" @click="giveServe('away')" class="serve-button">Give Serve</button>
         <button v-else @click="scorePoint('away')" :disabled="!!winner" class="score-button">Score</button>
       </div>
+
     </div>
 
     <div v-if="winner" class="winner-message">
